@@ -81,7 +81,7 @@
                                 <hr class="dropdown-divider border-theme-27 dark-border-dark-3">
                             </li>
                             <li>
-                                <form action="logou" method="POST">
+                                <form action="{{ route('logout') }}" method="POST">
                                     @csrf
                                     <button class="dropdown-item text-white bg-theme-1-hover dark-bg-dark-3-hover" type="submit"><i data-feather="toggle-right" class="w-4 h-4 me-2"></i> Logout</button>
                                 </form>

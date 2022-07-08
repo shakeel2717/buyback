@@ -20,7 +20,7 @@
                         <input id="remember-me" type="checkbox" class="form-check-input border me-2">
                         <label class="cursor-pointer select-none" for="remember-me">Remember me</label>
                     </div>
-                    <a href="">Forgot Password?</a>
+                    <a href="{{ route('password.request') }}">Forgot Password?</a>
                 </div>
                 <div class="intro-x mt-5 mt-xl-8 text-center text-xl-start">
                     <button class="btn btn-primary py-3 px-4 w-full w-xl-32 me-xl-3 align-top">Login</button>
