@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\user\CustomerController;
 use App\Http\Controllers\user\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,10 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::redirect('/', '/login');
-Route::redirect('/dashboard', '/dashboard/user/index');
+Route::redirect('/dashboard', '/user/dashboard/index');
 
 Route::prefix('user/dashboard')->name('user.')->middleware('auth')->group(function () {
     Route::resource('index', DashboardController::class);
+    Route::resource('customer', CustomerController::class);
 });
 
 require __DIR__ . '/auth.php';

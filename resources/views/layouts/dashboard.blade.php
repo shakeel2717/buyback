@@ -10,6 +10,8 @@
     <meta name="author" content="ASAN WEBS Development">
     <title>@yield('title') {{ env('APP_NAME') }} - {{ env('APP_DESC') }}</title>
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}" />
+    @livewireStyles
+    @powerGridStyles
 </head>
 
 <body class="main">
@@ -83,7 +85,9 @@
                             <li>
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
-                                    <button class="dropdown-item text-white bg-theme-1-hover dark-bg-dark-3-hover" type="submit"><i data-feather="toggle-right" class="w-4 h-4 me-2"></i> Logout</button>
+                                    <button class="dropdown-item text-white bg-theme-1-hover dark-bg-dark-3-hover"
+                                        type="submit"><i data-feather="toggle-right" class="w-4 h-4 me-2"></i>
+                                        Logout</button>
                                 </form>
                             </li>
                         </ul>
@@ -96,6 +100,8 @@
         </div>
     </div>
     <script src="{{ asset('assets/js/app.js') }}"></script>
+    @livewireScripts
+    @powerGridScripts
     <x-alert />
 </body>
 

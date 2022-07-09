@@ -23,12 +23,10 @@
                     <img alt="{{ env('APP_DESC') }}" class="-intro-x w-1/2 mt-n16"
                         src="{{ asset('assets/icons/analytical.png') }}">
                     <div class="-intro-x text-white fw-medium fs-4xl lh-base mt-10">
-                        A few more clicks to
-                        <br>
-                        sign in to your account.
+                        {{ env('APP_DESC') }}
                     </div>
                     <div class="-intro-x mt-5 fs-lg text-white text-opacity-70 dark-text-gray-500">
-                        {{ env('APP_DESC') }}</div>
+                        {{ env('APP_LONG_DESC') }}</div>
                 </div>
             </div>
             @yield('form')

@@ -27,7 +27,7 @@
                 </div>
             </form>
             <div class="intro-x mt-10 mt-xl-24 text-gray-700 dark-text-gray-600 text-center text-xl-start">
-                By signin in, you agree to our
+                By signing in, you agree to our
                 <br>
                 <a class="text-theme-1 dark-text-theme-10" href="">Terms and Conditions</a> & <a
                     class="text-theme-1 dark-text-theme-10" href="">Privacy Policy</a>

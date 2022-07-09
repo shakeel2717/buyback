@@ -1,3 +1,7 @@
-@props(['disabled' => false])
-
-<input {{ $disabled ? 'disabled' : '' }} {!! $attributes->merge(['class' => 'rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50']) !!}>
+<div>
+    <div class="mt-3">
+        <label for="vertical-form-1" class="form-label">{{ $label }}</label>
+        <input id="vertical-form-1" type="{{ $type }}" class="form-control" id="{{ $name }}"
+            name="{{ $name }}" placeholder="{{ $label }}" {{ $attribute }} value="{{ old($name) }}">
+    </div>
+</div>

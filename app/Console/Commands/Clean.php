@@ -31,6 +31,8 @@ class Clean extends Command
         $this->call('cache:clear');
         $this->call('view:clear');
         $this->call('route:clear');
+        $this->call('migrate:fresh');
+        $this->call('db:seed');
         $this->call('clear-compiled');
         return 0;
     }
