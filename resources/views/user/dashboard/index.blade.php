@@ -122,7 +122,7 @@
                         <div class="d-flex">
                             <i data-feather="users" class="report-box__icon text-theme-10"></i>
                         </div>
-                        <div class="report-box__total fs-3xl fw-medium mt-6">0</div>
+                        <div class="report-box__total fs-3xl fw-medium mt-6">{{ $customers->where('active', true)->count() }}</div>
                         <div class="fs-base text-gray-600 mt-1">Unpublished</div>
                     </div>
                 </div>
@@ -133,7 +133,7 @@
                         <div class="d-flex">
                             <i data-feather="users" class="report-box__icon text-theme-10"></i>
                         </div>
-                        <div class="report-box__total fs-3xl fw-medium mt-6">0</div>
+                        <div class="report-box__total fs-3xl fw-medium mt-6">{{ $customers->where('active', false)->count() }}</div>
                         <div class="fs-base text-gray-600 mt-1">Published</div>
                     </div>
                 </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -14,7 +15,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('user.dashboard.index');
+        $customers = Customer::get();
+        return view('user.dashboard.index' ,compact('customers'));
     }
 
     /**

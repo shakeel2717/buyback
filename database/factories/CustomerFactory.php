@@ -25,6 +25,7 @@ class CustomerFactory extends Factory
             'email' => $this->faker->email,
             'phone' => $this->faker->phoneNumber,
             'note' => $this->faker->text,
+            'active' => $this->faker->boolean,
         ];
     }
 }
