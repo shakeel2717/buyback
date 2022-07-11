@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 @section('title')
-    Dashboard
+    Add new Brands
 @endsection
 @section('content')
     <div class="g-col-12 mt-8">
@@ -8,14 +8,14 @@
             <div class="col-md-8 mx-auto">
                 <div class="intro-y">
                     <div class="intro-y box">
-                        <form action="{{ route('user.device.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('user.brand.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-12">
                                     <div
                                         class="d-flex flex-column flex-sm-row align-items-center p-5 border-bottom border-gray-200 dark-border-dark-5">
                                         <h2 class="fw-medium fs-base me-auto">
-                                            Add Device
+                                            Add Brands
                                         </h2>
                                     </div>
                                     <div id="vertical-form" class="p-5">
@@ -23,10 +23,7 @@
                                             <div class="col-md-12">
                                                 <x-input name="title" label="Title: " type="text" value="" />
                                             </div>
-                                            <div class="col-md-6">
-                                                <x-input name="picture" label="Image" type="file" value="" />
-                                            </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-12">
                                                 <x-input name="icon" label="Icon" type="file" value="" />
                                             </div>
                                             <div class="col-md-12">
@@ -42,7 +39,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button class="btn btn-primary mt-5">Add new Device</button>
+                                        <button class="btn btn-primary mt-5">Add new Brands</button>
                                     </div>
 
                                 </div>

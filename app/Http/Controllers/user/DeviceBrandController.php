@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
-use App\Models\user\Device;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class DeviceController extends Controller
+class DeviceBrandController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,7 @@ class DeviceController extends Controller
      */
     public function index()
     {
-        return view('user.dashboard.devices.index');
+        return view('user.dashboard.brands.index');
     }
 
     /**
@@ -26,7 +25,7 @@ class DeviceController extends Controller
      */
     public function create()
     {
-        return view('user.dashboard.devices.create');
+        return view('user.dashboard.brands.create');
     }
 
     /**
@@ -39,29 +38,22 @@ class DeviceController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required|max:255',
-            'picture' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'icon' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'description' => 'required|string',
             'short_description' => 'required|string',
         ]);
 
         // storing this image
-        $imageName = time().'.'.$request->picture->getClientOriginalExtension();
-        $request->picture->move(public_path('devices'), $imageName);
-
-        // storing this image
         $iconName = time().'.'.$request->icon->getClientOriginalExtension();
-        $request->icon->move(public_path('icones'), $iconName);
+        $request->icon->move(public_path('brands/icons/'), $iconName);
 
-        $validatedData['picture'] = $imageName;
         $validatedData['icon'] = $iconName;
 
         $user = Auth::user();
 
-        $user->devices()->create($validatedData);
+        $user->deviceBrands()->create($validatedData);
 
-        return redirect()->route('user.device.store')->with('success', 'Device created successfully');
-
+        return redirect()->route('user.brand.store')->with('success', 'Brand Added successfully');
     }
 
     /**

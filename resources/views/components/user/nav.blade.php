@@ -60,3 +60,30 @@
         </li>
     </ul>
 </li>
+<li>
+    <a href="javascript:;" class="{{ $mode == true ? 'side-' : '' }}menu">
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="file-text"></i> </div>
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__title">
+            Brand
+            <div class="{{ $mode == true ? 'side-' : '' }}menu__sub-icon"> <i data-feather="chevron-down"></i> </div>
+        </div>
+    </a>
+    <ul class="{{ $mode == true ? 'side-' : '' }}menu__sub">
+        <li>
+            <a href="{{ route('user.brand.index') }}"
+                class="{{ $mode == true ? 'side-' : '' }}menu">
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i>
+                </div>
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> All Brands </div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('user.brand.create') }}"
+                class="{{ $mode == true ? 'side-' : '' }}menu">
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i>
+                </div>
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> Add new Brand </div>
+            </a>
+        </li>
+    </ul>
+</li>

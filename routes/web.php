@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\user\CustomerController;
 use App\Http\Controllers\user\DashboardController;
+use App\Http\Controllers\user\DeviceBrandController;
 use App\Http\Controllers\user\DeviceController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,7 @@ Route::prefix('user/dashboard')->name('user.')->middleware('auth')->group(functi
     Route::resource('index', DashboardController::class);
     Route::resource('customer', CustomerController::class);
     Route::resource('device', DeviceController::class);
+    Route::resource('brand', DeviceBrandController::class);
 });
 
 require __DIR__ . '/auth.php';

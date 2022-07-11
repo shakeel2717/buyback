@@ -2,20 +2,16 @@
 
 namespace App\Http\Livewire\user;
 
-use App\Models\user\Device;
+use App\Models\user\DeviceBrand;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 use PowerComponents\LivewirePowerGrid\{Button, Column, Exportable, Footer, Header, PowerGrid, PowerGridComponent, PowerGridEloquent};
 
-final class AllDevices extends PowerGridComponent
+final class AllDeviceBrands extends PowerGridComponent
 {
     use ActionButton;
-
-    public $title = null;
-    public $description = null;
-    public $short_description = null;
 
     /*
     |--------------------------------------------------------------------------
@@ -50,11 +46,11 @@ final class AllDevices extends PowerGridComponent
     /**
      * PowerGrid datasource.
      *
-     * @return Builder<\App\Models\user\Device>
+     * @return Builder<\App\Models\user\DeviceBrand>
      */
     public function datasource(): Builder
     {
-        return Device::query();
+        return DeviceBrand::query();
     }
 
     /*
@@ -86,18 +82,16 @@ final class AllDevices extends PowerGridComponent
     public function addColumns(): PowerGridEloquent
     {
         return PowerGrid::eloquent()
+            ->addColumn('id')
             ->addColumn('title')
-            ->addColumn('picture', function ($model) {
-                return '<img src="/devices/' . $model->picture . '" width="50" height="50">';
-            })
-            ->addColumn('icone', function ($model) {
-                return '<img src="/icones/' . $model->icone . '" width="50" height="50">';
+            ->addColumn('icon', function ($model) {
+                return '<img src="/brands/icons/' . $model->icon . '" width="50" height="50">';
             })
             ->addColumn('description')
             ->addColumn('short_description')
             ->addColumn('published')
-            ->addColumn('created_at_formatted', fn (Device $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
-            ->addColumn('updated_at_formatted', fn (Device $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
+            ->addColumn('created_at_formatted', fn (DeviceBrand $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
+            ->addColumn('updated_at_formatted', fn (DeviceBrand $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
     }
 
     /*
@@ -117,25 +111,25 @@ final class AllDevices extends PowerGridComponent
     public function columns(): array
     {
         return [
+            Column::make('ID', 'id')
+                ->makeInputRange(),
 
             Column::make('TITLE', 'title')
                 ->sortable()
                 ->searchable()
-                ->editOnClick()
                 ->makeInputText(),
 
-            Column::make('PICTURE', 'picture'),
-
-            Column::make('ICONE', 'icone'),
+            Column::make('ICON', 'icon')
+                ->sortable()
+                ->searchable()
+                ->makeInputText(),
 
             Column::make('DESCRIPTION', 'description')
                 ->sortable()
-                ->editOnClick()
                 ->searchable(),
 
             Column::make('SHORT DESCRIPTION', 'short_description')
                 ->sortable()
-                ->editOnClick()
                 ->searchable(),
 
             Column::make('PUBLISHED', 'published')
@@ -163,7 +157,7 @@ final class AllDevices extends PowerGridComponent
     */
 
     /**
-     * PowerGrid Device Action Buttons.
+     * PowerGrid DeviceBrand Action Buttons.
      *
      * @return array<int, Button>
      */
@@ -172,24 +166,17 @@ final class AllDevices extends PowerGridComponent
     public function actions(): array
     {
         return [
-            //    Button::make('edit', 'Edit')
-            //        ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-            //        ->route('device.edit', ['device' => 'id']),
+            // Button::make('edit', 'Edit')
+            //     ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
+            //     ->route('device-brand.edit', ['device-brand' => 'id']),
 
             Button::make('destroy', 'Delete')
                 ->class('bg-theme-6 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-                ->route('user.device.destroy', ['device' => 'id'])
+                ->route('user.brand.destroy', ['brand' => 'id'])
                 ->method('delete')
         ];
     }
 
-
-    public function onUpdatedEditable($id, $field, $value): void
-    {
-        Device::query()->find($id)->update([
-            $field => $value,
-        ]);
-    }
 
     /*
     |--------------------------------------------------------------------------
@@ -200,7 +187,7 @@ final class AllDevices extends PowerGridComponent
     */
 
     /**
-     * PowerGrid Device Action Rules.
+     * PowerGrid DeviceBrand Action Rules.
      *
      * @return array<int, RuleActions>
      */
@@ -212,7 +199,7 @@ final class AllDevices extends PowerGridComponent
 
            //Hide button edit for ID 1
             Rule::button('edit')
-                ->when(fn($device) => $device->id === 1)
+                ->when(fn($device-brand) => $device-brand->id === 1)
                 ->hide(),
         ];
     }
