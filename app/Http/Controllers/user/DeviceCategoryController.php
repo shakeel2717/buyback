@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class DeviceBrandController extends Controller
+class DeviceCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class DeviceBrandController extends Controller
      */
     public function index()
     {
-        return view('user.dashboard.device.brands.index');
+        return view('user.dashboard.device.category.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class DeviceBrandController extends Controller
      */
     public function create()
     {
-        return view('user.dashboard.device.brands.create');
+        return view('user.dashboard.device.category.create');
     }
 
     /**
@@ -38,22 +38,28 @@ class DeviceBrandController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required|max:255',
+            'picture' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'icon' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'description' => 'required|string',
             'short_description' => 'required|string',
         ]);
 
         // storing this image
-        $iconName = time().'.'.$request->icon->getClientOriginalExtension();
-        $request->icon->move(public_path('brands/icons/'), $iconName);
+        $imageName = time().'.'.$request->picture->getClientOriginalExtension();
+        $request->picture->move(public_path('category/devices'), $imageName);
 
+        // storing this image
+        $iconName = time().'.'.$request->icon->getClientOriginalExtension();
+        $request->icon->move(public_path('category/icons'), $iconName);
+
+        $validatedData['picture'] = $imageName;
         $validatedData['icon'] = $iconName;
 
         $user = Auth::user();
 
-        $user->deviceBrands()->create($validatedData);
+        $user->deviceCategories()->create($validatedData);
 
-        return redirect()->route('user.brand.store')->with('success', 'Brand Added successfully');
+        return redirect()->route('user.device.category.index')->with('success', 'Device Category created successfully');
     }
 
     /**

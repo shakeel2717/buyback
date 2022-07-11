@@ -16,7 +16,7 @@ class DeviceController extends Controller
      */
     public function index()
     {
-        return view('user.dashboard.devices.index');
+        return view('user.dashboard.device.devices.index');
     }
 
     /**
@@ -26,7 +26,7 @@ class DeviceController extends Controller
      */
     public function create()
     {
-        return view('user.dashboard.devices.create');
+        return view('user.dashboard.device.devices.create');
     }
 
     /**

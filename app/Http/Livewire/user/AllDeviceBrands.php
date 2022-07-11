@@ -172,7 +172,7 @@ final class AllDeviceBrands extends PowerGridComponent
 
             Button::make('destroy', 'Delete')
                 ->class('bg-theme-6 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-                ->route('user.brand.destroy', ['brand' => 'id'])
+                ->route('user.device.brand.destroy', ['brand' => 'id'])
                 ->method('delete')
         ];
     }

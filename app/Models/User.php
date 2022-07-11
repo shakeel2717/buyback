@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\user\Device;
 use App\Models\user\DeviceBrand;
+use App\Models\user\DeviceCategory;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -59,5 +60,11 @@ class User extends Authenticatable
     public function deviceBrands()
     {
         return $this->hasMany(DeviceBrand::class);
+    }
+
+
+    public function deviceCategories()
+    {
+        return $this->hasMany(DeviceCategory::class);
     }
 }
