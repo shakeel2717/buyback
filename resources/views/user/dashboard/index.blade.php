@@ -80,7 +80,7 @@
                         <div class="d-flex">
                             <i data-feather="tablet" class="report-box__icon text-theme-10"></i>
                         </div>
-                        <div class="report-box__total fs-3xl fw-medium mt-6">0</div>
+                        <div class="report-box__total fs-3xl fw-medium mt-6">{{ $devices->count() }}</div>
                         <div class="fs-base text-gray-600 mt-1">Devices</div>
                     </div>
                 </div>
@@ -91,7 +91,7 @@
                         <div class="d-flex">
                             <i data-feather="tablet" class="report-box__icon text-theme-10"></i>
                         </div>
-                        <div class="report-box__total fs-3xl fw-medium mt-6">0</div>
+                        <div class="report-box__total fs-3xl fw-medium mt-6">{{ $brands->count() }}</div>
                         <div class="fs-base text-gray-600 mt-1">Brands</div>
                     </div>
                 </div>
@@ -102,7 +102,7 @@
                         <div class="d-flex">
                             <i data-feather="tablet" class="report-box__icon text-theme-10"></i>
                         </div>
-                        <div class="report-box__total fs-3xl fw-medium mt-6">0</div>
+                        <div class="report-box__total fs-3xl fw-medium mt-6">{{ $categories->count() }}</div>
                         <div class="fs-base text-gray-600 mt-1">Categories</div>
                     </div>
                 </div>
@@ -184,7 +184,7 @@
                     <div class="box p-5 zoom-in">
                         <div class="d-flex align-items-center">
                             <div class="w-2/4 flex-none">
-                                <div class="fs-xl fw-medium truncate">0
+                                <div class="fs-xl fw-medium truncate">{{ $devices->count() }}
                                 </div>
                                 <div class="text-gray-600 mt-1">Total devices</div>
                             </div>

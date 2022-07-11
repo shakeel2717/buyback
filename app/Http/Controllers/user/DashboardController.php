@@ -4,6 +4,9 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
+use App\Models\user\Device;
+use App\Models\user\DeviceBrand;
+use App\Models\user\DeviceCategory;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -16,7 +19,10 @@ class DashboardController extends Controller
     public function index()
     {
         $customers = Customer::get();
-        return view('user.dashboard.index' ,compact('customers'));
+        $devices = Device::get();
+        $brands = DeviceBrand::get();
+        $categories = DeviceCategory::get();
+        return view('user.dashboard.index' ,compact('customers','devices','brands','categories'));
     }
 
     /**
